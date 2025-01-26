@@ -3,6 +3,7 @@ import { Layout } from "antd";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import Link from "next/link";
+import "@ant-design/v5-patch-for-react-19";
 
 export default function RootLayout({
   children,
