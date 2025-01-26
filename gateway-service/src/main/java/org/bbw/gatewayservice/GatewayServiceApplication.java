@@ -22,9 +22,17 @@ public class GatewayServiceApplication {
         return builder.routes()
                 .route(p -> p
                         .path("/products")
-                        .filters(f -> f.circuitBreaker(config -> config.setName("mycmd").setFallbackUri("forward:/fallback")))
-						.uri("http://localhost:8081"))
-				.build();
+                        .filters(f -> f.circuitBreaker(config ->
+                                config.setName("mycmd").setFallbackUri("forward:/fallback")))
+                        .uri("http://localhost:8081"))
+                .route(p -> p
+                        .path("/customer-service/**")  // Match all paths under /customer-service
+                        .filters(f -> f
+                                .rewritePath("/customer-service/(?<segment>.*)", "/${segment}") // Remove `/customer-service` and forward the remaining path
+                                .circuitBreaker(config ->
+                                        config.setName("mycmd").setFallbackUri("forward:/fallback")))
+                        .uri("http://localhost:8082")) // Target service
+                .build();
     }
 
     @RequestMapping("/fallback")
