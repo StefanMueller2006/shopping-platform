@@ -21,17 +21,19 @@ public class GatewayServiceApplication {
     public RouteLocator myRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(p -> p
-                        .path("/products")
-                        .filters(f -> f.circuitBreaker(config ->
-                                config.setName("mycmd").setFallbackUri("forward:/fallback")))
-                        .uri("http://localhost:8081"))
-                .route(p -> p
-                        .path("/customer-service/**")  // Match all paths under /customer-service
+                        .path("/product-service/**")
                         .filters(f -> f
-                                .rewritePath("/customer-service/(?<segment>.*)", "/${segment}") // Remove `/customer-service` and forward the remaining path
+                                .rewritePath("/product-service/(?<segment>.*)", "/${segment}")
                                 .circuitBreaker(config ->
                                         config.setName("mycmd").setFallbackUri("forward:/fallback")))
-                        .uri("http://localhost:8082")) // Target service
+                        .uri("http://localhost:8081"))
+                .route(p -> p
+                        .path("/customer-service/**")
+                        .filters(f -> f
+                                .rewritePath("/customer-service/(?<segment>.*)", "/${segment}")
+                                .circuitBreaker(config ->
+                                        config.setName("mycmd").setFallbackUri("forward:/fallback")))
+                        .uri("http://localhost:8082"))
                 .build();
     }
 
