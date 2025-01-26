@@ -3,15 +3,12 @@ package org.bbw.customerservice;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 public class Customer {
-    private @Id
-    @GeneratedValue Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String lastName;
     private String firstName;
     private String email;
