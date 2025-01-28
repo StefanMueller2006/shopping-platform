@@ -34,6 +34,13 @@ public class GatewayServiceApplication {
                                 .circuitBreaker(config ->
                                         config.setName("mycmd").setFallbackUri("forward:/fallback")))
                         .uri("http://localhost:8082"))
+                .route(p -> p
+                        .path("/cart-service/**")
+                        .filters(f -> f
+                                .rewritePath("/cart-service/(?<segment>.*)", "/${segment}")
+                                .circuitBreaker(config ->
+                                        config.setName("mycmd").setFallbackUri("forward:/fallback")))
+                        .uri("http://localhost:8083"))
                 .build();
     }
 
