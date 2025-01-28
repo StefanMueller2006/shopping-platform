@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -18,11 +17,6 @@ public class CartController {
 
     @Autowired
     private CartRepository repository;
-
-    @GetMapping
-    public ResponseEntity<List<Cart>> getAllProducts() {
-        return ResponseEntity.ok().body(repository.findAll());
-    }
 
     // 1. Get cart by customer ID, create if not found
     @GetMapping("/{customerId}")
