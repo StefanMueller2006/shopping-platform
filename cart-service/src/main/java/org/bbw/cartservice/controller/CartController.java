@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/carts")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CartController {
 
     @Autowired
@@ -59,8 +59,13 @@ public class CartController {
 
         Cart cart = optionalCart.get();
         Map<Long, Long> products = cart.getProducts();
-        if (products.containsKey(productId) && products.get(productId) > 1) {
-            products.put(productId, products.get(productId) - 1);
+        if (products.containsKey(productId) ) {
+            if(products.get(productId) > 1) {
+                products.put(productId, products.get(productId) - 1);
+            }
+            else {
+                products.remove(productId);
+            }
         }
 
         cart.setProducts(products);

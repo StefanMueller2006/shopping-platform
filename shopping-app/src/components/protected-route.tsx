@@ -9,6 +9,10 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const [selectedCustomerIndex, setSelectedCustomerIndex] = useState(0);
 
   const onContinue = () => {
+    sessionStorage.setItem(
+      "loggedInCustomerId",
+      allCustomers[selectedCustomerIndex].id + "",
+    );
     setLoggedInCustomer(allCustomers[selectedCustomerIndex]);
   };
 
