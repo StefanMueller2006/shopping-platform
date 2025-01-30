@@ -2,8 +2,10 @@
 
 import { useProductsContext } from "@/contexts/product-context";
 import { Card, Col, Row, Typography } from "antd";
+import { useCustomersContext } from "@/contexts/customer-context";
 
 const Products = () => {
+  const { loggedInCustomer } = useCustomersContext();
   const { products } = useProductsContext();
   return (
     <div>
