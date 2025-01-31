@@ -16,7 +16,7 @@ public class OrderController {
 
     @PostMapping("/place_order")
     public ResponseEntity<String> placeOrder(@RequestBody Order order) {
-        kafkaProducer.sendMessage("Hello");
+        kafkaProducer.sendMessage("Hello World!");
         return ResponseEntity.ok("Order for customer with id: " + order.getCustomerId() + " placed.");
     }
 
