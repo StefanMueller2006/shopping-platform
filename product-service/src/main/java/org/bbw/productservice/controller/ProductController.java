@@ -48,6 +48,17 @@ public class ProductController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
+    public void removeProducts(Long id, Long stockQuantity) {
+        repository.findById(id)
+                .map(product -> {
+                    Long newStockQuantity = product.getStockQuantity() - stockQuantity;
+                    product.setStockQuantity(newStockQuantity);
+                    repository.save(product);
+                    return ResponseEntity.noContent().build();
+                });
+        ResponseEntity.noContent().build();
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         repository.deleteById(id);

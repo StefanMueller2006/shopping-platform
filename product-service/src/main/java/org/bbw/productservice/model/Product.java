@@ -21,7 +21,7 @@ public class Product {
 
     private String description;
 
-    private Integer stockQuantity;
+    private Long stockQuantity;
 
     private String category;
 
@@ -36,7 +36,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String name, Double price, String description, Integer stockQuantity, String category, Boolean isAvailable, Date createdAt, Date updatedAt) {
+    public Product(Long id, String name, Double price, String description, Long stockQuantity, String category, Boolean isAvailable, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -80,11 +80,11 @@ public class Product {
         this.description = description;
     }
 
-    public Integer getStockQuantity() {
+    public Long getStockQuantity() {
         return stockQuantity;
     }
 
-    public void setStockQuantity(Integer stockQuantity) {
+    public void setStockQuantity(Long stockQuantity) {
         this.stockQuantity = stockQuantity;
     }
 
@@ -100,8 +100,8 @@ public class Product {
         return isAvailable;
     }
 
-    public void setIsAvailable(Boolean isAvailable) {
-        this.isAvailable = isAvailable;
+    public void setIsAvailable(Boolean available) {
+        isAvailable = available;
     }
 
     public Date getCreatedAt() {
