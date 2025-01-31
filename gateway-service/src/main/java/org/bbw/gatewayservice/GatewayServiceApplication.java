@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
 
 @SpringBootApplication
 @RestController
@@ -52,7 +52,7 @@ public class GatewayServiceApplication {
     }
 
     @RequestMapping("/fallback")
-    public Mono<String> fallback() {
-        return Mono.just("fallback");
+    public ResponseEntity<Void> fallback() {
+        return ResponseEntity.status(503).build();
     }
 }
