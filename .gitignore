@@ -1,1 +1,44 @@
-/.idea/
+# General Ignore
+HELP.md
+
+# Build and Target Directories
+**/target/
+!**/.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+**/build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Spring Tool Suite (STS)
+**/.apt_generated
+**/.classpath
+**/.factorypath
+**/.project
+**/.settings/
+**/.springBeans
+**/.sts4-cache
+
+# IntelliJ IDEA
+**/*.iws
+**/*.iml
+**/*.ipr
+
+# NetBeans
+**/nbproject/private/
+**/nbbuild/
+**/dist/
+**/nbdist/
+**/.nb-gradle/
+
+# VS Code
+**/.vscode/
+
+# Logs and Temporary Files
+**/logs/
+**/*.log
+**/.DS_Store
+**/node_modules/
+**/.env
+**/bin/
+**/out/
