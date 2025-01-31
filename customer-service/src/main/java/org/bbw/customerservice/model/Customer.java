@@ -4,8 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Entity
+@CrossOrigin(origins = "http://localhost:3000")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +26,10 @@ public class Customer {
         this.lastName = lastName;
         this.firstName = firstName;
         this.email = email;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getLastName() {
